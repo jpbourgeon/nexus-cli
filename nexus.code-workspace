@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    // terminal
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    // format
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    // lint
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+    // files associations
+    "files.associations": {
+      "*.json": "jsonc"
+    }
+  }
+}
