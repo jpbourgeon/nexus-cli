@@ -6,12 +6,22 @@ networks:
   app2-net:
 
 services:
-  app2-service1:
+  a2s1:
     profiles: [all, app2]
     image: hashicorp/http-echo
     environment:
       - ECHO_TEXT=app2-service1
     ports:
       - "8201:5678"
+    networks:
+      - app2-net
+  
+  a2s2:
+    profiles: [all, app2]
+    image: hashicorp/http-echo
+    environment:
+      - ECHO_TEXT=app2-service2
+    ports:
+      - "8202:5678"
     networks:
       - app2-net

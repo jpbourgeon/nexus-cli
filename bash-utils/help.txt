@@ -1,16 +1,17 @@
+# NX
+
+> An opinionated Subset of preconfigured docker compose commands to help manage the nexus smart home containers.
 
 Usage:  nx COMMAND [PROFILE [SERVICE]]
 
-Subset of preconfigured docker compose commands to help manage the nexus smart home containers.
-
 Commands:
-  containers  List containers  
-  images      List images
-  networks    List networks
   profiles    List profiles
   services    List services
+  containers  List containers  
+  networks    List networks
   volumes     List volumes
-  top         List running processes
+  images      List images
+  proc        List running processes
   logs        View latest output from containers
 
   up          Create and start services in the background
@@ -28,4 +29,4 @@ Commands:
 
   help        Display this help
 
-# Unported docker compose commands : alpha-*, build, config, cp, create, events, exec, kill, ls, port, push, run, version, wait, watch
+Unported docker compose commands: alpha-*, build, config, cp, create, events, exec, kill, ls, port, push, run, version, wait, watch
