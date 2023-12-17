@@ -1,0 +1,31 @@
+
+Usage:  nx COMMAND [PROFILE [SERVICE]]
+
+Subset of preconfigured docker compose commands to help manage the nexus smart home containers.
+
+Commands:
+  containers  List containers  
+  images      List images
+  networks    List networks
+  profiles    List profiles
+  services    List services
+  volumes     List volumes
+  top         List running processes
+  logs        View latest output from containers
+
+  up          Create and start services in the background
+  pause       Pause services
+  unpause     Unpause services
+  stop        Stop services
+  start       Start stopped services
+  restart     Restart running services
+  
+  pull        Pull service images
+  
+  rm          Stop and remove containers, networks
+  nuke        /!\ You may lose data - use nuke at your own risk !
+              Stop and remove containers, networks, images and volumes.
+
+  help        Display this help
+
+# Unported docker compose commands : alpha-*, build, config, cp, create, events, exec, kill, ls, port, push, run, version, wait, watch

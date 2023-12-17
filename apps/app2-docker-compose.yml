@@ -1,0 +1,17 @@
+version: "3"
+
+name: app2
+
+networks:
+  app2-net:
+
+services:
+  app2-service1:
+    profiles: [all, app2]
+    image: hashicorp/http-echo
+    environment:
+      - ECHO_TEXT=app2-service1
+    ports:
+      - "8201:5678"
+    networks:
+      - app2-net

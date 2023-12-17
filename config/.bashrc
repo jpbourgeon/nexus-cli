@@ -136,3 +136,11 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Nexus configuration
+export NEXUS_PROJECT_PATH="/mnt/data/nexus"
+export NEXUS_BASH_UTILS_PATH="$NEXUS_PROJECT_PATH/bash-utils"
+
+if [ -f "$NEXUS_BASH_UTILS_PATH/_nx.sh" ]; then
+    . "$NEXUS_BASH_UTILS_PATH/_nx.sh"
+fi
