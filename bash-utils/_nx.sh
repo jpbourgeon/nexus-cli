@@ -1,8 +1,9 @@
 #!/bin/bash
 
-source $NEXUS_BASH_UTILS_PATH/utils.sh
-# source $NEXUS_BASH_UTILS_PATH/services.sh
-# source $NEXUS_BASH_UTILS_PATH/profiles.sh
+alias _nx='sudo docker compose -f "$NEXUS_PROJECT_PATH/docker-compose.yml"'
+
+source $NEXUS_BASH_UTILS_PATH/profiles.sh
+source $NEXUS_BASH_UTILS_PATH/services.sh
 source $NEXUS_BASH_UTILS_PATH/containers.sh
 # source $NEXUS_BASH_UTILS_PATH/networks.sh
 # source $NEXUS_BASH_UTILS_PATH/volumes.sh
@@ -22,14 +23,20 @@ source $NEXUS_BASH_UTILS_PATH/up.sh
 
 function nx() {
   case "$1" in
+  "profiles")
+    _nx_profiles
+    ;;
+  "services")
+    _nx_services $2
+    ;;
   "containers")
-    _nx-containers $2 $3
+    _nx_containers $2 $3
     ;;
   "images")
-    _nx-images $2 $3
+    _nx_images $2 $3
     ;;
   "up")
-    _nx-up $2 $3
+    _nx_up $2 $3
     ;;
   *)
     cat $NEXUS_BASH_UTILS_PATH/help.txt
@@ -48,14 +55,22 @@ function _nx_autocomplete() {
     COMPREPLY=($(compgen -W "${opts}" -- ${cur_word}))
     ;;
   2) # profile
-    profiles=($(_nx_profiles | awk '{print $1}' | sort))
-    cur_word="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=($(compgen -W "${profiles[*]}" -- "$cur_word"))
+    if [[ "${COMP_WORDS[COMP_CWORD - 1]}" == "profiles" ]]; then
+      COMPREPLY=()
+    else
+      profiles=($(_nx_profiles | awk '{print $1}' | sort))
+      cur_word="${COMP_WORDS[COMP_CWORD]}"
+      COMPREPLY=($(compgen -W "${profiles[*]}" -- "$cur_word"))
+    fi
     ;;
   3) # service
-    services=($(_nx_services "${COMP_WORDS[COMP_CWORD - 1]}" | sort))
-    cur_word="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=($(compgen -W "${services[*]}" -- "$cur_word"))
+    if [[ "${COMP_WORDS[COMP_CWORD - 2]}" == "services" ]]; then
+      COMPREPLY=()
+    else
+      services=($(_nx_services "${COMP_WORDS[COMP_CWORD - 1]}" | sort))
+      cur_word="${COMP_WORDS[COMP_CWORD]}"
+      COMPREPLY=($(compgen -W "${services[*]}" -- "$cur_word"))
+    fi
     ;;
   esac
   return 0

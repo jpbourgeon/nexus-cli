@@ -1,4 +1,4 @@
-function _nx-up() {
+function _nx_up() {
     local profile=$1
     local service=$2
     if [ -n "$profile" ]; then
