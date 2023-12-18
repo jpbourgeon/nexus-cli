@@ -5,7 +5,7 @@
 ## Docker compose convention
 
 - As of now, the cli is mono project. It targets a single docker-compose.yaml file.
-- Services should use profiles to group related services. The "all" should 
+- Services should use profiles to group related services. The "all" profile is expected to be set on every services. 
 
 ## Installation
 
@@ -17,4 +17,4 @@
 ## Cli Usage
 
 - an `nx` command is available to manage your docker compose project. Run `nx help` to learn more
-- a `dk` command aliases `sudo docker` for manual actions
+- a `dk` command aliasing `sudo docker` is also available for convenience.
