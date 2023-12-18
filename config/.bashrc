@@ -136,9 +136,9 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # Nexus configuration
-export NEXUS_CLI="/mnt/data/nexus-cli/src"
-export NEXUS_APPS="/mnt/data/apps"
-export NEXUS_VOLS="/mnt/data/apps"
+export NEXUS_CLI="/mnt/data/nexus-cli/src" # Path to the CLI folder
+export NEXUS_SVC="/mnt/data/services"      # Path to the folder where your docker-compose files are located
+export NEXUS_VOL="/mnt/data/volumes"       # Path to the folder where your volumes are located
 
 if [ -f "$NEXUS_CLI/_nx.sh" ]; then
     . "$NEXUS_CLI/_nx.sh"

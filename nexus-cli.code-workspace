@@ -1,7 +1,14 @@
 {
   "folders": [
     {
+      "name": "cli",
       "path": "."
+    },
+    {
+      "path": "../services"
+    },
+    {
+      "path": "../volumes"
     }
   ],
   "settings": {

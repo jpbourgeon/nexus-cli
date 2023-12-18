@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias _nx='sudo docker compose -f "$NEXUS_APPS/docker-compose.yml"'
+alias _nx='sudo docker compose -f "$NEXUS_SVC/docker-compose.yml"'
 
 source $NEXUS_CLI/up.sh
 # source $NEXUS_CLI/pause.sh
