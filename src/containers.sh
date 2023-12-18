@@ -9,7 +9,7 @@ function _nx_containers() {
             if [ "$profile" = "all" ]; then
                 _nx ps
             else
-                ! _nx_check-profile "$profile" && return 1
+                ! _nx_profile_check "$profile" && return 1
                 services=($(_nx_services "$profile"))
                 for service in "${services[@]}"; do
                     if [ "$first_iteration" = true ]; then

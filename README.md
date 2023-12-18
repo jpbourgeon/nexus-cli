@@ -1,8 +1,8 @@
 # Nexus
 
-> Smart home server configuration
+> An opinionated subset of preconfigured docker compose commands to manage applications and services.
 
-## Install
+## Installation
 
 - review and customize the files in the `config` folder:
   - In `.bashrc`: `NEXUS_PROJECT_PATH` environment variable

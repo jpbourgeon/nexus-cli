@@ -1,7 +1,0 @@
-version: "3"
-
-name: nexus
-
-include:
-  - path: apps/app1-docker-compose.yml
-  - path: apps/app2-docker-compose.yml
