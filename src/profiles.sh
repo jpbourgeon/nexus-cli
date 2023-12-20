@@ -1,4 +1,5 @@
 function _nx_profiles() {
+    echo "PROFILE"
     _nx config --profiles
 }
 
@@ -8,7 +9,7 @@ function _nx_profile_check() {
     if echo "$profiles" | grep -q -w "$profile"; then
         return 0
     else
-        echo "No such profile: $profile"
+        echo "No such profile \"$profile\""
         return 1
     fi
 }

@@ -1,30 +1,29 @@
 An opinionated subset of preconfigured docker compose commands to manage applications and services.
 
-Usage:  nx COMMAND [PROFILE [SERVICE]]
+Usage:  nx COMMAND [PROFILE] [SERVICE] [OPTIONS]
 
 Commands:
-  up          Create and start services in the background
-  pause       Pause services
-  unpause     Unpause services
-  stop        Stop services
-  start       Start stopped services
-  restart     Restart running services
-  
-  profiles    List profiles
-  services    List services
-  containers  List containers
-  networks    List networks
-  volumes     List volumes
-  images      List images
-  proc        List running processes
-  logs        View latest output from containers
 
-  pull        Pull service images
-  
-  down        Stop and remove containers and networks
-  nuke        /!\ You may lose data - use nuke at your own risk!
-              Stop and remove containers, networks, images and volumes
+up            Create and start services in the background
+pause         Pause services
+unpause       Unpause services
+stop          Stop services
+start         Start stopped services
+restart       Restart running services
 
-  help        Display this help
+profiles      List profiles
+services      List services
+containers    List containers
+networks      List networks
+volumes       List volumes
+images        List images
+top           List running processes
+logs          View latest output from containers
+
+pull          Pull images of service and its dependencies
+
+prune         Stops containers and removes containers, networks, images and volumes
+
+help          Display this help
 
 Unported docker compose commands: alpha-*, build, config, cp, create, events, exec, kill, ls, port, push, run, version, wait, watch

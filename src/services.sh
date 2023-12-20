@@ -1,5 +1,6 @@
 function _nx_services() {
     local profile=$1
+    echo "SERVICE"
     if [ -n "$profile" ]; then
         _nx_profile_check "$profile" && _nx --profile "$profile" config --services
     else
@@ -14,7 +15,7 @@ function _nx_service_check() {
     if echo "$services" | grep -q -w "$service"; then
         return 0
     else
-        echo "No such service: $service, in profile: $profile"
+        echo "No such service \"$service\" found in profile \"$profile\"".
         return 1
     fi
 }
