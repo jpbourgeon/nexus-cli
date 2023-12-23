@@ -1,0 +1,98 @@
+name: nexus
+services:
+  h2:
+    profiles:
+    - all
+    - h2
+    container_name: h2
+    environment:
+      PGID: "1000"
+      PUID: "1000"
+      TZ: Europe/Paris
+    image: lscr.io/linuxserver/heimdall:latest
+    networks:
+      swag-net: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "8002"
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      published: "8402"
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: volume
+      source: h2-vol
+      target: /config
+      volume: {}
+  heimdall:
+    profiles:
+    - all
+    - heimdall
+    container_name: heimdall
+    environment:
+      PGID: "1000"
+      PUID: "1000"
+      TZ: Europe/Paris
+    image: lscr.io/linuxserver/heimdall:latest
+    networks:
+      swag-net: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "8000"
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      published: "8400"
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: bind
+      source: /mnt/data/volumes/heimdall
+      target: /config
+      bind:
+        create_host_path: true
+  swag:
+    profiles:
+    - all
+    - swag
+    cap_add:
+    - NET_ADMIN
+    container_name: swag
+    environment:
+      DNSPLUGIN: cloudflare
+      PGID: "1000"
+      PUID: "1000"
+      SUBDOMAINS: wildcard
+      TZ: Europe/Paris
+      URL: bourgeon.jp.net
+      VALIDATION: dns
+    image: lscr.io/linuxserver/swag
+    networks:
+      swag-net: null
+    ports:
+    - mode: ingress
+      target: 443
+      published: "443"
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: bind
+      source: /mnt/data/volumes/swag
+      target: /config
+      bind:
+        create_host_path: true
+networks:
+  swag-net:
+    name: nexus_swag-net
+volumes:
+  h2-vol:
+    name: nexus_h2-vol
+    driver: local
+    driver_opts:
+      device: /mnt/data/volumes/h2
+      o: bind
+      type: none

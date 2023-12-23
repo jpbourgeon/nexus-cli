@@ -1,6 +1,6 @@
-An opinionated subset of preconfigured docker compose commands to manage applications and services.
+An opinionated subset of preconfigured docker and docker-compose commands to manage applications and services.
 
-Usage:  nx COMMAND [PROFILE] [SERVICE] [OPTIONS]
+Usage:  nx COMMAND [PROFILE] [SERVICE]
 
 Commands:
 
@@ -22,8 +22,6 @@ logs          View latest output from containers
 
 pull          Pull images of service and its dependencies
 
-prune         Stops containers and removes containers, networks, images and volumes
+rm            Stops and removes containers, networks, images and volumes
 
 help          Display this help
-
-Unported docker compose commands: alpha-*, build, config, cp, create, events, exec, kill, ls, port, push, run, version, wait, watch

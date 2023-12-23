@@ -8,7 +8,7 @@ source $NEXUS_CLI/images.sh
 source $NEXUS_CLI/logs.sh
 source $NEXUS_CLI/networks.sh
 source $NEXUS_CLI/profiles.sh
-source $NEXUS_CLI/prune.sh
+source $NEXUS_CLI/rm.sh
 source $NEXUS_CLI/pull.sh
 source $NEXUS_CLI/services.sh
 source $NEXUS_CLI/up.sh
@@ -16,16 +16,15 @@ source $NEXUS_CLI/volumes.sh
 
 function nx() {
   case "$1" in
-
   "containers") _nx_containers $2 $3 ;;
   "images") _nx_images $2 $3 ;;
   "logs") _nx_logs $2 $3 ;;
   "networks") _nx_networks $2 $3 ;;
   "pause") _nx_generic $1 $2 $3 ;;
   "profiles") _nx_profiles ;;
-  "prune") _nx_prune $2 $3 ;;
   "pull") _nx_pull $2 $3 ;;
   "restart") _nx_generic $1 $2 $3 ;;
+  "rm") _nx_rm $2 $3 ;;
   "services") _nx_services $2 ;;
   "start") _nx_generic $1 $2 $3 ;;
   "stop") _nx_generic $1 $2 $3 ;;
@@ -43,7 +42,7 @@ function _nx_autocomplete() {
   1) # command
     COMPREPLY=()
     cur_word="${COMP_WORDS[COMP_CWORD]}"
-    opts="archive containers images logs networks pause profiles prune pull restart services start stop top unpause up volumes help"
+    opts="archive containers images logs networks pause profiles pull restart rm services start stop top unpause up volumes help"
 
     COMPREPLY=($(compgen -W "${opts}" -- ${cur_word}))
     ;;

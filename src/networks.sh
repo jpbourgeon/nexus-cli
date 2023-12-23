@@ -17,11 +17,11 @@ function _nx_networks_extract() {
     local config services service networks network name result
     config=$1
     services=($(echo "$config" | jq -r '.services | keys[]'))
-    result="SERVICE\tNETWORK\tDOCKER_NAME"
+    result="SERVICE\tNETWORK"
     for service in "${services[@]}"; do
         network=$(echo "$config" | jq -r ".services[\"$service\"].networks | keys[0]")
         network_name=$(echo "$config" | jq -r ".networks[\"$network\"].name")
-        result+="\n$service\t$network\t$network_name"
+        result+="\n$service\t$network_name"
     done
     echo -e "$result" | column -t -s $'\t'
 }
